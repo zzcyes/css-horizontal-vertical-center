@@ -82,16 +82,27 @@ body {
 .pond > .frog-wrapper {
   width: 160px;
   height: 160px;
-  /* z-index: 20; */
+  z-index: 20;
 }
 
 .pond > .frog-wrapper > .frog {
   width: 160px;
   height: 160px;
-  background-image: url(../images/frog-green.svg);
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
   background-size: cover;
   background-size: 60% 60%;
+}
+
+.frog-yellow {
+  background-image: url(../images/frog-yellow.svg);
+}
+
+.frog-red {
+  background-image: url(../images/frog-red.svg);
+}
+
+.frog-green {
+  background-image: url(../images/frog-green.svg);
 }

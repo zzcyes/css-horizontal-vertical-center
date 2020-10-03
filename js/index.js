@@ -6,7 +6,8 @@ const pondText = document.querySelector(".pond-text");
 const frogText = document.querySelector(".frog-text");
 
 const pond = document.querySelector(".pond");
-const frog = document.querySelector(".frog-wrapper");
+const frogWrapper = document.querySelector(".frog-wrapper");
+const frog = document.querySelector(".frog");
 
 const setAttrs = (el, value = "") => {
   el.setAttribute("style", value);
@@ -22,38 +23,48 @@ const getElmsCenterPosition = (elms) => {
   );
 };
 
-const trim = (str) => {
-  return str.replace(/\s*/g, "");
+const initFrog = () => {
+  frog.classList.remove("frog-green");
+  frog.classList.remove("frog-red");
+  frog.classList.add("frog-yellow");
 };
-
-const pondCenter = getElmsCenterPosition(pond);
 
 clearBtn.addEventListener("click", () => {
   pondText.value = "";
   frogText.value = "";
   setAttrs(pond, "");
-  setAttrs(frog, "");
+  setAttrs(frogWrapper, "");
+  initFrog();
 });
 
 leapBackBtn.addEventListener("click", () => {
   setAttrs(pond, "");
-  setAttrs(frog, "");
+  setAttrs(frogWrapper, "");
+  initFrog();
 });
 
 leapNextBtn.addEventListener("click", () => {
   try {
-    setAttrs(pond, trim(pondText.value));
-    setAttrs(frog, trim(frogText.value));
-    const frogCenter = getElmsCenterPosition(frog);
-    const { left, top } = frogCenter;
-    if (left === pondCenter.left && top === pondCenter.top) {
-      alert("小哇：谢谢你！");
+    setAttrs(pond, pondText.value);
+    setAttrs(frogWrapper, frogText.value);
+
+    const pondCenter = getElmsCenterPosition(pond);
+    const frogCenter = getElmsCenterPosition(frogWrapper);
+
+    frog.classList.remove("frog-yellow");
+
+    if (
+      frogCenter.left === pondCenter.left &&
+      frogCenter.top === pondCenter.top
+    ) {
+      frog.classList.add("frog-green");
     } else {
-      alert("小哇：你要谋杀我吗！");
+      frog.classList.add("frog-red");
     }
+    console.log(pondCenter, frogCenter);
   } catch (e) {
     setAttrs(pond, "");
-    setAttrs(frog, "");
+    setAttrs(frogWrapper, "");
     alert(e);
   }
 });
