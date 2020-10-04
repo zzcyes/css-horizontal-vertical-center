@@ -1,3 +1,5 @@
+import { setAttrs, getElmsCenterPosition, isSameCenterPoint } from "./utils.js";
+
 const clearBtn = document.querySelector(".clear-btn");
 const leapNextBtn = document.querySelector(".leap-next-btn");
 const leapBackBtn = document.querySelector(".leap-back-btn");
@@ -6,65 +8,49 @@ const pondText = document.querySelector(".pond-text");
 const frogText = document.querySelector(".frog-text");
 
 const pond = document.querySelector(".pond");
-const frogWrapper = document.querySelector(".frog-wrapper");
 const frog = document.querySelector(".frog");
 
-const setAttrs = (el, value = "") => {
-  el.setAttribute("style", value);
-};
-
-const getElmsCenterPosition = (elms) => {
-  const rect = elms.getBoundingClientRect();
-  return (
-    {
-      left: rect.left + (rect.right - rect.left) / 2,
-      top: rect.top + (rect.bottom - rect.top) / 2
-    } || {}
-  );
-};
-
-const initFrog = () => {
+const clearAttrsAndClass = () => {
+  setAttrs(pond, "");
+  setAttrs(frog, "");
   frog.classList.remove("frog-green");
   frog.classList.remove("frog-red");
   frog.classList.add("frog-yellow");
+  frog.classList.add("animated");
 };
 
 clearBtn.addEventListener("click", () => {
   pondText.value = "";
   frogText.value = "";
-  setAttrs(pond, "");
-  setAttrs(frogWrapper, "");
-  initFrog();
+  clearAttrsAndClass();
 });
 
 leapBackBtn.addEventListener("click", () => {
-  setAttrs(pond, "");
-  setAttrs(frogWrapper, "");
-  initFrog();
+  clearAttrsAndClass();
 });
 
 leapNextBtn.addEventListener("click", () => {
   try {
+    frog.classList.remove("animated");
+
     setAttrs(pond, pondText.value);
-    setAttrs(frogWrapper, frogText.value);
+    setAttrs(frog, frogText.value);
 
     const pondCenter = getElmsCenterPosition(pond);
-    const frogCenter = getElmsCenterPosition(frogWrapper);
+    const frogCenter = getElmsCenterPosition(frog);
 
     frog.classList.remove("frog-yellow");
 
-    if (
-      frogCenter.left === pondCenter.left &&
-      frogCenter.top === pondCenter.top
-    ) {
+    if (isSameCenterPoint(frogCenter, pondCenter)) {
       frog.classList.add("frog-green");
     } else {
       frog.classList.add("frog-red");
+      frog.classList.add("animated");
     }
+
     console.log(pondCenter, frogCenter);
   } catch (e) {
-    setAttrs(pond, "");
-    setAttrs(frogWrapper, "");
+    clearAttrsAndClass();
     alert(e);
   }
 });
