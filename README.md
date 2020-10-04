@@ -161,10 +161,7 @@
 
 ## 相关链接
 
-- [使用CSS让一个元素水平垂直居中](https://github.com/YvetteLau/Step-By-Step/issues/42)
-
 - [一个学习 css FLEXBOX的游戏](http://flexboxfroggy.com/)
 
 - [CSS实现水平垂直居中的1010种方式](https://yanhaijing.com/css/2018/01/17/horizontal-vertical-center/)
 
-- [实现垂直居中](https://github.com/LiangJunrong/document-library/blob/master/other-library/interview/%E9%9D%A2%E8%AF%95%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/CSS/HTML%2BCSS.md#chapter-two-four)
