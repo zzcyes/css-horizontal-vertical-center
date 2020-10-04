@@ -4,7 +4,7 @@
 
 最近在总结水平垂直居中这块的知识点，于是写了一个比较简单的：
 
-![css-center-003.gif](../../images/css-center-003.gif)
+![css-center-003.gif](https://raw.githubusercontent.com/zzcyes/my-blog/master/docs/images/css-center-003.gif)
 
 👉小哇真可怜，别拦着我，[我要帮助小哇！](https://63w52.csb.app/)
 
@@ -13,7 +13,7 @@
 
 快来学习如何帮助小哇(frog)跳到池塘(pond)中央的荷叶上吧！
 
-![css-center-003.png](../../images/css-center-003.png)
+![css-center-003.png](https://github.com/zzcyes/my-blog/blob/master/docs/images/css-center-003.png?raw=true)
 
 - html
 
